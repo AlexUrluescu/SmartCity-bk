@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Sensor from "./models/senzorModel.js";
+import Sensor from "./models/sensorModel.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -41,10 +41,7 @@ app.get("/api/sendData", async (req, res) => {
   const humidity = req.query.humidity;
   const date = new Date();
   const emission = req.query.emission;
-
-  console.log(temperature);
-  console.log(humidity);
-  console.log(emission);
+  const zone = req.query.zone;
 
   try {
     const dataReceived = {
@@ -52,7 +49,10 @@ app.get("/api/sendData", async (req, res) => {
       humidity: humidity,
       date: date,
       emission: emission,
+      zone: zone,
     };
+
+    console.log(dataReceived);
 
     const newSenzor = await Sensor.create(dataReceived);
 

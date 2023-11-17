@@ -20,6 +20,10 @@ const sensorSchema = new Schema({
     type: Number,
     required: true,
   },
+  zone: {
+    type: Number,
+    required: true,
+  },
 });
 
 const Sensor = mongoose.model("Sensor", sensorSchema);
