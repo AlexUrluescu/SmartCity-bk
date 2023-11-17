@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // Define schema
 const Schema = mongoose.Schema;
 
-const senzorSchema = new Schema({
+const sensorSchema = new Schema({
   temperature: {
     type: Number,
     required: true,
@@ -22,6 +22,6 @@ const senzorSchema = new Schema({
   },
 });
 
-const Senzor = mongoose.model("Senzor", senzorSchema);
+const Sensor = mongoose.model("Sensor", sensorSchema);
 
-export default Senzor;
+export default Sensor;

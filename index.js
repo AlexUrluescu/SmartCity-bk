@@ -1,6 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
-import Senzor from "./models/senzorModel.js";
+import Sensor from "./models/senzorModel.js";
 import dotenv from "dotenv";
 
 const app = express();
@@ -21,7 +21,7 @@ const connect = async () => {
 
 app.get("/lastdata", async (req, res) => {
   try {
-    const mostRecentValue = await Senzor.find().sort({ _id: -1 }).limit(1);
+    const mostRecentValue = await Sensor.find().sort({ _id: -1 }).limit(1);
     res.json(mostRecentValue[0]);
   } catch (error) {
     console.log(error);
@@ -54,7 +54,7 @@ app.get("/api/sendData", async (req, res) => {
       emission: emission,
     };
 
-    const newSenzor = await Senzor.create(dataReceived);
+    const newSenzor = await Sensor.create(dataReceived);
 
     res.status(200).json(newSenzor);
   } catch (error) {
